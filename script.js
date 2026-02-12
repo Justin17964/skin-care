@@ -12,11 +12,60 @@ const progressText = document.querySelector('.progress-text');
 const backToTop = document.getElementById('back-to-top');
 const navAnchorLinks = document.querySelectorAll('.nav-links a');
 const saveRoutineBtn = document.querySelector('.routine-builder .btn-primary');
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const glossarySearch = document.getElementById('glossary-search');
+const glossaryTerms = document.querySelectorAll('.glossary-term');
+const navActions = document.querySelector('.nav-actions');
 
 // Mobile Menu Toggle
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
+        // Also toggle nav actions (dark mode button) on mobile
+        if (navActions) {
+            navActions.classList.toggle('active');
+        }
+    });
+}
+
+// Dark Mode Toggle
+if (darkModeToggle) {
+    // Check for saved dark mode preference
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+    
+    darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        
+        // Update icon
+        if (isDark) {
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    });
+}
+
+// Glossary Search
+if (glossarySearch) {
+    glossarySearch.addEventListener('input', () => {
+        const searchTerm = glossarySearch.value.toLowerCase();
+        
+        glossaryTerms.forEach(term => {
+            const termTitle = term.querySelector('h3').textContent.toLowerCase();
+            const termDescription = term.querySelector('p').textContent.toLowerCase();
+            
+            if (termTitle.includes(searchTerm) || termDescription.includes(searchTerm)) {
+                term.style.display = 'block';
+            } else {
+                term.style.display = 'none';
+            }
+        });
     });
 }
 
@@ -247,7 +296,7 @@ if (heroButtons.length > 0) {
 
 // Animate elements on scroll
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.section-header, .tip-card');
+    const elements = document.querySelectorAll('.section-header, .tip-card, .glossary-term');
     
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
@@ -276,6 +325,17 @@ document.querySelectorAll('.tip-card').forEach(card => {
     
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'translateY(0)';
+    });
+});
+
+// Add hover effects to glossary terms
+document.querySelectorAll('.glossary-term').forEach(term => {
+    term.addEventListener('mouseenter', () => {
+        term.style.transform = 'translateY(-10px)';
+    });
+    
+    term.addEventListener('mouseleave', () => {
+        term.style.transform = 'translateY(0)';
     });
 });
 

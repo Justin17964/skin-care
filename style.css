@@ -138,6 +138,37 @@ p {
 
 .nav-actions {
     margin-left: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile nav actions */
+@media (max-width: 768px) {
+    .nav-actions {
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateX(150%);
+        transition: transform 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 999;
+    }
+    
+    .nav-actions.active {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    body.dark-mode .nav-actions {
+        background-color: #1a1a1a;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    }
 }
 
 /* Hero Section */
@@ -703,6 +734,165 @@ p {
 .back-to-top:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(255, 154, 158, 0.4);
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+}
+
+body.dark-mode .header {
+    background-color: rgba(26, 26, 26, 0.95);
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
+    color: #f0f0f0;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+}
+
+body.dark-mode .hero p {
+    color: #ccc;
+}
+
+body.dark-mode .routine {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .routine-builder {
+    background-color: #1a1a1a;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .quiz-container {
+    background-color: #1a1a1a;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .tips {
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+}
+
+body.dark-mode .tip-card {
+    background-color: #1a1a1a;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .glossary {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .glossary-term {
+    background-color: #1a1a1a;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .footer {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .btn-secondary {
+    background-color: #1a1a1a;
+    color: #ff9a9e;
+    border: 1px solid #ff9a9e;
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: #ff9a9e;
+    color: #1a1a1a;
+}
+
+body.dark-mode .option {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+}
+
+body.dark-mode .option:hover {
+    border-color: #ff9a9e;
+    background-color: rgba(255, 154, 158, 0.1);
+}
+
+body.dark-mode .product-select {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    border: 1px solid #444;
+}
+
+body.dark-mode #glossary-search {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    border: 1px solid #444;
+}
+
+/* Skincare Glossary Section */
+.glossary {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+}
+
+.glossary-search {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+#glossary-search {
+    width: 100%;
+    max-width: 600px;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#glossary-search:focus {
+    border-color: #ff9a9e;
+    box-shadow: 0 0 0 3px rgba(255, 154, 158, 0.1);
+}
+
+.glossary-terms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.glossary-term {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.glossary-term:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glossary-term h3 {
+    color: #ff9a9e;
+    margin-bottom: 1rem;
+}
+
+.glossary-term p {
+    color: #666;
+}
+
+body.dark-mode .glossary-term p {
+    color: #ccc;
 }
 
 /* Responsive Design */
