@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlamGoddess - Elevate Your Skincare Routine</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <h1>GlamGoddess</h1>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#routine">Routine</a></li>
+                    <li><a href="#quiz">Skin Quiz</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="btn btn-primary">Shop Now</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Elevate Your Skincare Routine</h2>
+                <p>Discover premium skincare products tailored to your unique skin needs. Achieve that radiant, goddess-like glow.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-secondary">Take Skin Quiz</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20skincare%20products%20on%20golden%20background%20with%20sparkles&image_size=landscape_16_9" alt="Luxury Skincare Collection">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Collection</h2>
+                <p>Curated with the finest ingredients for every skin type</p>
+            </div>
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="cleanser">Cleansers</button>
+                <button class="filter-btn" data-filter="serum">Serums</button>
+                <button class="filter-btn" data-filter="moisturizer">Moisturizers</button>
+                <button class="filter-btn" data-filter="mask">Masks</button>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="cleanser">
+                    <div class="product-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20foaming%20cleanser%20bottle%20on%20white%20background&image_size=square" alt="Gentle Foaming Cleanser">
+                    </div>
+                    <div class="product-info">
+                        <h3>Gentle Foaming Cleanser</h3>
+                        <p>Deeply cleanses without stripping moisture</p>
+                        <div class="product-price">$28.00</div>
+                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-category="serum">
+                    <div class="product-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20hyaluronic%20acid%20serum%20bottle%20with%20dropper&image_size=square" alt="Hyaluronic Acid Serum">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hyaluronic Acid Serum</h3>
+                        <p>Intense hydration for plump, youthful skin</p>
+                        <div class="product-price">$45.00</div>
+                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" data-category="moisturizer">
+                    <div class="product-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20moisturizer%20cream%20jar%20with%20gold%20accents&image_size=square" alt="Daytime Moisturizer">
+                    </div>
+                    <div class="product-info">
+                        <h3>Daytime Moisturizer</h3>
+                        <p>Lightweight hydration with SPF protection</p>
+                        <div class="product-price">$38.00</div>
+                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card" data-category="mask">
+                    <div class="product-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20face%20mask%20jar%20with%20pink%20cream&image_size=square" alt="Radiance Boost Mask">
+                    </div>
+                    <div class="product-info">
+                        <h3>Radiance Boost Mask</h3>
+                        <p>Instant glow with vitamin C and antioxidants</p>
+                        <div class="product-price">$32.00</div>
+                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card" data-category="cleanser">
+                    <div class="product-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20oil%20cleanser%20bottle%20with%20pump&image_size=square" alt="Oil-Based Cleanser">
+                    </div>
+                    <div class="product-info">
+                        <h3>Oil-Based Cleanser</h3>
+                        <p>Removes makeup and impurities gently</p>
+                        <div class="product-price">$30.00</div>
+                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" data-category="serum">
+                    <div class="product-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=luxury%20vitamin%20c%20serum%20bottle%20with%20dropper&image_size=square" alt="Vitamin C Serum">
+                    </div>
+                    <div class="product-info">
+                        <h3>Vitamin C Serum</h3>
+                        <p>Brightens and evens skin tone</p>
+                        <div class="product-price">$42.00</div>
+                        <button class="btn btn-sm btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Routine Builder Section -->
+    <section id="routine" class="routine">
+        <div class="container">
+            <div class="section-header">
+                <h2>Build Your Perfect Routine</h2>
+                <p>Customize your skincare steps for morning and night</p>
+            </div>
+            <div class="routine-builder">
+                <div class="routine-tab active" data-routine="morning">Morning</div>
+                <div class="routine-tab" data-routine="night">Night</div>
+                <div class="routine-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Cleanser</h3>
+                            <p>Start with a gentle cleanser to remove impurities</p>
+                            <div class="step-products">
+                                <select class="product-select">
+                                    <option value="">Select Cleanser</option>
+                                    <option value="gentle-foaming">Gentle Foaming Cleanser</option>
+                                    <option value="oil-based">Oil-Based Cleanser</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Toner</h3>
+                            <p>Balance your skin's pH levels</p>
+                            <div class="step-products">
+                                <select class="product-select">
+                                    <option value="">Select Toner</option>
+                                    <option value="hydrating">Hydrating Toner</option>
+                                    <option value="exfoliating">Exfoliating Toner</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Serum</h3>
+                            <p>Target specific skin concerns</p>
+                            <div class="step-products">
+                                <select class="product-select">
+                                    <option value="">Select Serum</option>
+                                    <option value="hyaluronic">Hyaluronic Acid Serum</option>
+                                    <option value="vitamin-c">Vitamin C Serum</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Moisturizer</h3>
+                            <p>Lock in hydration</p>
+                            <div class="step-products">
+                                <select class="product-select">
+                                    <option value="">Select Moisturizer</option>
+                                    <option value="daytime">Daytime Moisturizer</option>
+                                    <option value="nighttime">Nighttime Repair Cream</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Save Routine</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Quiz Section -->
+    <section id="quiz" class="quiz">
+        <div class="container">
+            <div class="section-header">
+                <h2>Find Your Skin Type</h2>
+                <p>Answer a few questions to get personalized recommendations</p>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div class="progress-text">Question 1 of 5</div>
+                </div>
+                <div class="quiz-questions">
+                    <div class="question active" data-question="1">
+                        <h3>How would you describe your skin?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="dry">
+                                <span>Dry - often feels tight and flaky</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="oily">
+                                <span>Oily - shiny, especially in the T-zone</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="combination">
+                                <span>Combination - oily in T-zone, dry elsewhere</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="normal">
+                                <span>Normal - balanced, not too oily or dry</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question" data-question="2">
+                        <h3>What are your main skin concerns?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="aging">
+                                <span>Anti-aging (wrinkles, fine lines)</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="acne">
+                                <span>Acne and breakouts</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="brightening">
+                                <span>Brightening and uneven tone</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="hydration">
+                                <span>Hydration and moisture</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question" data-question="3">
+                        <h3>How often do you exfoliate?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="never">
+                                <span>Never</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="weekly">
+                                <span>Once a week</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="biweekly">
+                                <span>2-3 times a week</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="daily">
+                                <span>Every day</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question" data-question="4">
+                        <h3>Do you use sunscreen regularly?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="yes-daily">
+                                <span>Yes, every day</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="yes-sometimes">
+                                <span>Yes, but only sometimes</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="no">
+                                <span>No, I don't use sunscreen</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question" data-question="5">
+                        <h3>What's your budget range for skincare?</h3>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q5" value="budget">
+                                <span>Budget-friendly ($10-20 per product)</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="mid-range">
+                                <span>Mid-range ($20-40 per product)</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q5" value="premium">
+                                <span>Premium ($40+ per product)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="quiz-results" style="display: none;">
+                    <h3>Your Skin Profile</h3>
+                    <div class="result-content">
+                        <p>Based on your answers, we've determined your skin type is: <span id="skin-type-result">Combination</span></p>
+                        <p>Recommended products:</p>
+                        <ul id="recommended-products">
+                            <li>Gentle Foaming Cleanser</li>
+                            <li>Hyaluronic Acid Serum</li>
+                            <li>Daytime Moisturizer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="quiz-buttons">
+                    <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+                    <button class="btn btn-primary" id="next-btn">Next</button>
+                    <button class="btn btn-primary" id="submit-btn" style="display: none;">Submit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skincare Tips Section -->
+    <section id="tips" class="tips">
+        <div class="container">
+            <div class="section-header">
+                <h2>Expert Skincare Tips</h2>
+                <p>Learn from our dermatologists and beauty experts</p>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Daily Sun Protection</h3>
+                    <p>Always wear sunscreen with at least SPF 30, even on cloudy days, to protect your skin from harmful UV rays.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Hydration is Key</h3>
+                    <p>Drink plenty of water and use hydrating products with hyaluronic acid to maintain plump, healthy skin.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Nighttime Repair</h3>
+                    <p>Use richer moisturizers and targeted treatments at night when your skin's repair processes are most active.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Gentle Exfoliation</h3>
+                    <p>Exfoliate 2-3 times a week to remove dead skin cells, but be gentle to avoid irritation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Goddesses Say</h2>
+                <p>Real results from real users</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=beautiful%20woman%20with%20glowing%20skin%20headshot&image_size=square" alt="User Avatar">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"I've tried so many skincare products, but GlamGoddess is the only one that's given me consistent results. My skin has never looked better!"</p>
+                        <h4>Sarah Johnson</h4>
+                        <p class="testimonial-location">New York, USA</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=young%20woman%20with%20clear%20skin%20headshot&image_size=square" alt="User Avatar">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"The hyaluronic acid serum is a game-changer! My skin feels so hydrated and looks plumper. I get compliments all the time now."</p>
+                        <h4>Emily Chen</h4>
+                        <p class="testimonial-location">Los Angeles, USA</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=woman%20with%20radiant%20skin%20headshot&image_size=square" alt="User Avatar">
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The skin quiz was spot on! The products recommended for my combination skin have balanced everything out perfectly. Love this brand!"</p>
+                        <h4>Michelle Rodriguez</h4>
+                        <p class="testimonial-location">Miami, USA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>GlamGoddess</h3>
+                    <p>Elevate your skincare routine to goddess status</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">Cleansers</a></li>
+                        <li><a href="#">Serums</a></li>
+                        <li><a href="#">Moisturizers</a></li>
+                        <li><a href="#">Masks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Info</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Join Our Community</h4>
+                    <p>Subscribe to get exclusive offers and skincare tips</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GlamGoddess. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
