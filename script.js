@@ -17,6 +17,42 @@ const glossarySearch = document.getElementById('glossary-search');
 const glossaryTerms = document.querySelectorAll('.glossary-term');
 const navActions = document.querySelector('.nav-actions');
 
+// New Feature DOM Elements
+const skinPhotoInput = document.getElementById('skin-photo');
+const trackerDate = document.getElementById('tracker-date');
+const trackerNotes = document.getElementById('tracker-notes');
+const saveProgressBtn = document.getElementById('save-progress');
+const progressTimeline = document.getElementById('progress-timeline');
+const ingredientSearch = document.getElementById('ingredient-search');
+const checkIngredientBtn = document.getElementById('check-ingredient');
+const ingredientResult = document.getElementById('ingredient-result');
+const ingredientBtns = document.querySelectorAll('.ingredient-btn');
+const seasonTabs = document.querySelectorAll('.season-tab');
+const seasonInfos = document.querySelectorAll('.season-info');
+
+// New Section DOM Elements
+const reminderType = document.getElementById('reminder-type');
+const reminderTime = document.getElementById('reminder-time');
+const dayOptions = document.querySelectorAll('input[name="day"]');
+const reminderNotes = document.getElementById('reminder-notes');
+const saveReminderBtn = document.getElementById('save-reminder');
+const remindersContainer = document.getElementById('reminders-container');
+const concernType = document.getElementById('concern-type');
+const concernSeverity = document.getElementById('concern-severity');
+const severityValue = document.getElementById('severity-value');
+const concernDate = document.getElementById('concern-date');
+const concernNotes = document.getElementById('concern-notes');
+const saveConcernBtn = document.getElementById('save-concern');
+const concernsContainer = document.getElementById('concerns-container');
+const productName = document.getElementById('product-name');
+const productBrand = document.getElementById('product-brand');
+const productType = document.getElementById('product-type');
+const productRating = document.getElementById('product-rating');
+const ratingValue = document.getElementById('rating-value');
+const productNotes = document.getElementById('product-notes');
+const saveProductBtn = document.getElementById('save-product');
+const productsGrid = document.getElementById('products-grid');
+
 // Mobile Menu Toggle
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
@@ -339,6 +375,264 @@ document.querySelectorAll('.glossary-term').forEach(term => {
     });
 });
 
+// Skin Progress Tracker Functionality
+if (saveProgressBtn) {
+    // Set default date to today
+    const today = new Date().toISOString().split('T')[0];
+    trackerDate.value = today;
+    
+    // Load saved progress from local storage
+    loadProgressFromStorage();
+    
+    saveProgressBtn.addEventListener('click', () => {
+        const photoFile = skinPhotoInput.files[0];
+        const date = trackerDate.value;
+        const notes = trackerNotes.value;
+        
+        if (!photoFile) {
+            alert('Please upload a skin photo');
+            return;
+        }
+        
+        if (!date) {
+            alert('Please select a date');
+            return;
+        }
+        
+        // Read and save the photo as base64
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const photoData = e.target.result;
+            const progressItem = {
+                id: Date.now(),
+                photo: photoData,
+                date: date,
+                notes: notes
+            };
+            
+            // Save to local storage
+            saveProgressToStorage(progressItem);
+            
+            // Add to timeline
+            addProgressToTimeline(progressItem);
+            
+            // Reset form
+            skinPhotoInput.value = '';
+            trackerNotes.value = '';
+            trackerDate.value = today;
+            
+            alert('Progress saved successfully!');
+        };
+        reader.readAsDataURL(photoFile);
+    });
+}
+
+function saveProgressToStorage(progressItem) {
+    const progress = JSON.parse(localStorage.getItem('skinProgress') || '[]');
+    progress.push(progressItem);
+    localStorage.setItem('skinProgress', JSON.stringify(progress));
+}
+
+function loadProgressFromStorage() {
+    const progress = JSON.parse(localStorage.getItem('skinProgress') || '[]');
+    if (progress.length > 0) {
+        // Clear empty state
+        document.querySelector('.timeline-empty').style.display = 'none';
+        
+        // Add all progress items to timeline
+        progress.forEach(item => {
+            addProgressToTimeline(item);
+        });
+    }
+}
+
+function addProgressToTimeline(progressItem) {
+    // Clear empty state if present
+    const emptyState = document.querySelector('.timeline-empty');
+    if (emptyState) {
+        emptyState.style.display = 'none';
+    }
+    
+    const progressElement = document.createElement('div');
+    progressElement.className = 'progress-item';
+    progressElement.innerHTML = `
+        <img src="${progressItem.photo}" alt="Skin progress photo" class="progress-photo">
+        <div class="progress-details">
+            <div class="progress-date">${progressItem.date}</div>
+            <div class="progress-notes">${progressItem.notes || 'No notes'}</div>
+        </div>
+    `;
+    
+    // Add to timeline (newest first)
+    if (progressTimeline.firstChild) {
+        progressTimeline.insertBefore(progressElement, progressTimeline.firstChild);
+    } else {
+        progressTimeline.appendChild(progressElement);
+    }
+}
+
+// Ingredient Checker Functionality
+const ingredientDatabase = {
+    'hyaluronic acid': {
+        name: 'Hyaluronic Acid',
+        description: 'A humectant that occurs naturally in the body, hyaluronic acid attracts and retains moisture in the skin.',
+        benefits: [
+            'Intensely hydrates the skin',
+            'Plumps and firms the skin',
+            'Reduces the appearance of fine lines',
+            'Improves skin elasticity',
+            'Suitable for all skin types'
+        ]
+    },
+    'vitamin c': {
+        name: 'Vitamin C',
+        description: 'A powerful antioxidant that plays a crucial role in collagen synthesis and skin protection.',
+        benefits: [
+            'Brightens skin tone',
+            'Boosts collagen production',
+            'Protects against environmental damage',
+            'Reduces hyperpigmentation',
+            'Improves skin texture'
+        ]
+    },
+    'retinol': {
+        name: 'Retinol',
+        description: 'A derivative of vitamin A, retinol is one of the most researched and effective skincare ingredients.',
+        benefits: [
+            'Reduces the appearance of wrinkles',
+            'Improves skin texture and tone',
+            'Unclogs pores and treats acne',
+            'Stimulates collagen production',
+            'Fades dark spots'
+        ]
+    },
+    'niacinamide': {
+        name: 'Niacinamide',
+        description: 'A form of vitamin B3 that offers multiple benefits for the skin.',
+        benefits: [
+            'Regulates oil production',
+            'Minimizes pore appearance',
+            'Reduces redness and inflammation',
+            'Strengthens the skin barrier',
+            'Fades hyperpigmentation'
+        ]
+    },
+    'ceramides': {
+        name: 'Ceramides',
+        description: 'Lipids that make up a significant portion of the skins natural barrier.',
+        benefits: [
+            'Strengthens the skin barrier',
+            'Prevents moisture loss',
+            'Protects against environmental damage',
+            'Soothes dry, irritated skin',
+            'Improves skin texture'
+        ]
+    },
+    'alpha hydroxy acids': {
+        name: 'Alpha Hydroxy Acids (AHAs)',
+        description: 'Water-soluble acids that exfoliate the skins surface.',
+        benefits: [
+            'Exfoliates dead skin cells',
+            'Improves skin texture',
+            'Brightens skin tone',
+            'Reduces the appearance of fine lines',
+            'Enhances product absorption'
+        ]
+    }
+};
+
+if (checkIngredientBtn) {
+    checkIngredientBtn.addEventListener('click', () => {
+        const ingredient = ingredientSearch.value.toLowerCase().trim();
+        if (ingredient) {
+            searchIngredient(ingredient);
+        } else {
+            alert('Please enter an ingredient name');
+        }
+    });
+    
+    // Handle popular ingredient buttons
+    ingredientBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const ingredient = btn.getAttribute('data-ingredient').toLowerCase();
+            ingredientSearch.value = btn.getAttribute('data-ingredient');
+            searchIngredient(ingredient);
+        });
+    });
+    
+    // Allow Enter key to search
+    ingredientSearch.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const ingredient = ingredientSearch.value.toLowerCase().trim();
+            if (ingredient) {
+                searchIngredient(ingredient);
+            }
+        }
+    });
+}
+
+function searchIngredient(ingredient) {
+    const normalizedIngredient = ingredient.toLowerCase().trim();
+    
+    if (ingredientDatabase[normalizedIngredient]) {
+        displayIngredientInfo(ingredientDatabase[normalizedIngredient]);
+    } else {
+        // Check for partial matches
+        let found = false;
+        for (const key in ingredientDatabase) {
+            if (key.includes(normalizedIngredient) || ingredientDatabase[key].name.toLowerCase().includes(normalizedIngredient)) {
+                displayIngredientInfo(ingredientDatabase[key]);
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            ingredientResult.innerHTML = `
+                <div class="ingredient-not-found">
+                    <h3>Ingredient Not Found</h3>
+                    <p>Sorry, we don't have information about this ingredient yet. Try one of the popular ingredients below!</p>
+                </div>
+            `;
+        }
+    }
+}
+
+function displayIngredientInfo(ingredient) {
+    ingredientResult.innerHTML = `
+        <div class="ingredient-info">
+            <h3>${ingredient.name}</h3>
+            <p>${ingredient.description}</p>
+            <div class="ingredient-benefits">
+                <h4>Benefits:</h4>
+                <ul>
+                    ${ingredient.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+// Seasonal Skincare Tips Functionality
+if (seasonTabs.length > 0) {
+    seasonTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const season = tab.getAttribute('data-season');
+            
+            // Update tabs
+            seasonTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            // Update content
+            seasonInfos.forEach(info => {
+                info.classList.remove('active');
+                if (info.getAttribute('data-season') === season) {
+                    info.classList.add('active');
+                }
+            });
+        });
+    });
+}
+
 // Smooth scroll for all anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -395,3 +689,338 @@ function addImageLoadingAnimation() {
 
 // Initialize image loading animation
 window.addEventListener('load', addImageLoadingAnimation);
+
+// Initialize new features on page load
+window.addEventListener('load', () => {
+    // Load reminders from local storage
+    loadRemindersFromStorage();
+    // Load skin concerns from local storage
+    loadConcernsFromStorage();
+    // Load products from local storage
+    loadProductsFromStorage();
+    // Set default date for concern tracker
+    const today = new Date().toISOString().split('T')[0];
+    if (concernDate) {
+        concernDate.value = today;
+    }
+});
+
+// Range input value updates
+if (concernSeverity && severityValue) {
+    concernSeverity.addEventListener('input', () => {
+        severityValue.textContent = concernSeverity.value;
+    });
+}
+
+if (productRating && ratingValue) {
+    productRating.addEventListener('input', () => {
+        ratingValue.textContent = productRating.value;
+    });
+}
+
+// Skincare Routine Reminder Functionality
+if (saveReminderBtn) {
+    saveReminderBtn.addEventListener('click', () => {
+        const type = reminderType.value;
+        const time = reminderTime.value;
+        const selectedDays = Array.from(dayOptions)
+            .filter(day => day.checked)
+            .map(day => day.value);
+        const notes = reminderNotes.value;
+        
+        if (!type || !time || selectedDays.length === 0) {
+            alert('Please fill in all required fields (type, time, and at least one day)');
+            return;
+        }
+        
+        const reminder = {
+            id: Date.now(),
+            type: type,
+            time: time,
+            days: selectedDays,
+            notes: notes
+        };
+        
+        // Save to local storage
+        saveReminderToStorage(reminder);
+        
+        // Add to reminders list
+        addReminderToList(reminder);
+        
+        // Reset form
+        reminderType.value = 'morning';
+        reminderTime.value = '';
+        dayOptions.forEach(day => day.checked = false);
+        reminderNotes.value = '';
+        
+        alert('Reminder saved successfully!');
+    });
+}
+
+function saveReminderToStorage(reminder) {
+    const reminders = JSON.parse(localStorage.getItem('skincareReminders') || '[]');
+    reminders.push(reminder);
+    localStorage.setItem('skincareReminders', JSON.stringify(reminders));
+}
+
+function loadRemindersFromStorage() {
+    const reminders = JSON.parse(localStorage.getItem('skincareReminders') || '[]');
+    if (reminders.length > 0) {
+        // Clear empty state
+        document.querySelector('.reminder-empty').style.display = 'none';
+        
+        // Add all reminders to list
+        reminders.forEach(reminder => {
+            addReminderToList(reminder);
+        });
+    }
+}
+
+function addReminderToList(reminder) {
+    // Clear empty state if present
+    const emptyState = document.querySelector('.reminder-empty');
+    if (emptyState) {
+        emptyState.style.display = 'none';
+    }
+    
+    const reminderElement = document.createElement('div');
+    reminderElement.className = 'reminder-item';
+    
+    // Map day abbreviations to full day names
+    const dayMap = {
+        'mon': 'Monday',
+        'tue': 'Tuesday',
+        'wed': 'Wednesday',
+        'thu': 'Thursday',
+        'fri': 'Friday',
+        'sat': 'Saturday',
+        'sun': 'Sunday'
+    };
+    
+    const fullDayNames = reminder.days.map(day => dayMap[day]).join(', ');
+    
+    reminderElement.innerHTML = `
+        <div class="reminder-time">${reminder.time} - ${reminder.type.charAt(0).toUpperCase() + reminder.type.slice(1)} Routine</div>
+        <div class="reminder-days">${fullDayNames}</div>
+        ${reminder.notes ? `<div class="reminder-notes">${reminder.notes}</div>` : ''}
+    `;
+    
+    // Add to reminders container
+    remindersContainer.appendChild(reminderElement);
+}
+
+// Skin Concern Tracker Functionality
+if (saveConcernBtn) {
+    saveConcernBtn.addEventListener('click', () => {
+        const type = concernType.value;
+        const severity = concernSeverity.value;
+        const date = concernDate.value;
+        const notes = concernNotes.value;
+        
+        if (!type || !date) {
+            alert('Please fill in all required fields (concern type and date)');
+            return;
+        }
+        
+        const concern = {
+            id: Date.now(),
+            type: type,
+            severity: severity,
+            date: date,
+            notes: notes
+        };
+        
+        // Save to local storage
+        saveConcernToStorage(concern);
+        
+        // Add to concerns list
+        addConcernToList(concern);
+        
+        // Reset form
+        concernType.value = 'acne';
+        concernSeverity.value = '5';
+        severityValue.textContent = '5';
+        concernDate.value = new Date().toISOString().split('T')[0];
+        concernNotes.value = '';
+        
+        alert('Skin concern saved successfully!');
+    });
+}
+
+function saveConcernToStorage(concern) {
+    const concerns = JSON.parse(localStorage.getItem('skinConcerns') || '[]');
+    concerns.push(concern);
+    localStorage.setItem('skinConcerns', JSON.stringify(concerns));
+}
+
+function loadConcernsFromStorage() {
+    const concerns = JSON.parse(localStorage.getItem('skinConcerns') || '[]');
+    if (concerns.length > 0) {
+        // Clear empty state
+        document.querySelector('.concern-empty').style.display = 'none';
+        
+        // Sort concerns by date (newest first)
+        concerns.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        // Add all concerns to list
+        concerns.forEach(concern => {
+            addConcernToList(concern);
+        });
+    }
+}
+
+function addConcernToList(concern) {
+    // Clear empty state if present
+    const emptyState = document.querySelector('.concern-empty');
+    if (emptyState) {
+        emptyState.style.display = 'none';
+    }
+    
+    const concernElement = document.createElement('div');
+    concernElement.className = 'concern-item';
+    
+    // Map concern types to user-friendly names
+    const concernMap = {
+        'acne': 'Acne',
+        'dryness': 'Dryness',
+        'oiliness': 'Oiliness',
+        'wrinkles': 'Wrinkles/Fine Lines',
+        'dark-spots': 'Dark Spots',
+        'redness': 'Redness',
+        'sensitivity': 'Sensitivity'
+    };
+    
+    concernElement.innerHTML = `
+        <div class="concern-header">
+            <div class="concern-type">${concernMap[concern.type] || concern.type}</div>
+            <div class="concern-severity">Severity: ${concern.severity}/10</div>
+        </div>
+        <div class="concern-date">${concern.date}</div>
+        ${concern.notes ? `<div class="concern-notes">${concern.notes}</div>` : ''}
+    `;
+    
+    // Add to concerns container
+    concernsContainer.appendChild(concernElement);
+}
+
+// Product Library Functionality
+if (saveProductBtn) {
+    saveProductBtn.addEventListener('click', () => {
+        const name = productName.value;
+        const brand = productBrand.value;
+        const type = productType.value;
+        const rating = productRating.value;
+        const notes = productNotes.value;
+        
+        if (!name || !brand) {
+            alert('Please fill in all required fields (product name and brand)');
+            return;
+        }
+        
+        const product = {
+            id: Date.now(),
+            name: name,
+            brand: brand,
+            type: type,
+            rating: rating,
+            notes: notes
+        };
+        
+        // Save to local storage
+        saveProductToStorage(product);
+        
+        // Add to products grid
+        addProductToGrid(product);
+        
+        // Reset form
+        productName.value = '';
+        productBrand.value = '';
+        productType.value = 'cleanser';
+        productRating.value = '3';
+        ratingValue.textContent = '3';
+        productNotes.value = '';
+        
+        alert('Product saved successfully!');
+    });
+}
+
+function saveProductToStorage(product) {
+    const products = JSON.parse(localStorage.getItem('skincareProducts') || '[]');
+    products.push(product);
+    localStorage.setItem('skincareProducts', JSON.stringify(products));
+}
+
+function loadProductsFromStorage() {
+    const products = JSON.parse(localStorage.getItem('skincareProducts') || '[]');
+    if (products.length > 0) {
+        // Clear empty state
+        document.querySelector('.product-empty').style.display = 'none';
+        
+        // Add all products to grid
+        products.forEach(product => {
+            addProductToGrid(product);
+        });
+    }
+}
+
+function addProductToGrid(product) {
+    // Clear empty state if present
+    const emptyState = document.querySelector('.product-empty');
+    if (emptyState) {
+        emptyState.style.display = 'none';
+    }
+    
+    const productElement = document.createElement('div');
+    productElement.className = 'product-card';
+    
+    // Map product types to user-friendly names
+    const productTypeMap = {
+        'cleanser': 'Cleanser',
+        'toner': 'Toner',
+        'serum': 'Serum',
+        'moisturizer': 'Moisturizer',
+        'sunscreen': 'Sunscreen',
+        'mask': 'Mask',
+        'exfoliator': 'Exfoliator'
+    };
+    
+    // Generate star rating HTML
+    let starsHtml = '';
+    for (let i = 1; i <= 5; i++) {
+        starsHtml += i <= product.rating 
+            ? '<i class="fas fa-star"></i>' 
+            : '<i class="far fa-star"></i>';
+    }
+    
+    productElement.innerHTML = `
+        <div class="product-name">${product.name}</div>
+        <div class="product-brand">${product.brand}</div>
+        <div class="product-type">${productTypeMap[product.type] || product.type}</div>
+        <div class="product-rating">
+            <div class="rating-stars">${starsHtml}</div>
+            <span>${product.rating}/5</span>
+        </div>
+        ${product.notes ? `<div class="product-notes">${product.notes}</div>` : ''}
+    `;
+    
+    // Add to products grid
+    productsGrid.appendChild(productElement);
+}
+
+// Blog post click handler
+document.querySelectorAll('.blog-post').forEach(post => {
+    post.addEventListener('click', (e) => {
+        // Only handle clicks that aren't on the "Read More" button
+        if (!e.target.closest('.btn')) {
+            alert('Blog post functionality coming soon!');
+        }
+    });
+});
+
+// Read More button click handler
+document.querySelectorAll('.blog-post .btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Blog post functionality coming soon!');
+    });
+});

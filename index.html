@@ -25,6 +25,13 @@
                     <li><a href="#quiz">Skin Quiz</a></li>
                     <li><a href="#tips">Tips</a></li>
                     <li><a href="#glossary">Glossary</a></li>
+                    <li><a href="#tracker">Progress Tracker</a></li>
+                    <li><a href="#ingredient-checker">Ingredient Checker</a></li>
+                    <li><a href="#seasonal">Seasonal Tips</a></li>
+                    <li><a href="#reminders">Reminders</a></li>
+                    <li><a href="#concerns">Skin Concerns</a></li>
+                    <li><a href="#products">Product Library</a></li>
+                    <li><a href="#blog">Skincare Blog</a></li>
                 </ul>
                 <div class="nav-actions">
                     <button class="btn btn-secondary" id="dark-mode-toggle">
@@ -340,6 +347,361 @@
         </div>
     </section>
 
+    <!-- Skin Progress Tracker Section -->
+    <section id="tracker" class="tracker">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skin Progress Tracker</h2>
+                <p>Track your skin improvement journey over time</p>
+            </div>
+            <div class="tracker-content">
+                <div class="tracker-upload">
+                    <h3>Upload Progress Photo</h3>
+                    <p>Take a photo of your skin and upload it to track changes over time</p>
+                    <div class="upload-area">
+                        <input type="file" id="skin-photo" accept="image/*" capture="camera">
+                        <label for="skin-photo">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Click to Upload or Drag & Drop</span>
+                        </label>
+                    </div>
+                    <div class="tracker-form">
+                        <div class="form-group">
+                            <label for="tracker-date">Date</label>
+                            <input type="date" id="tracker-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="tracker-notes">Notes</label>
+                            <textarea id="tracker-notes" placeholder="Add notes about your skincare routine, products used, or observations..."></textarea>
+                        </div>
+                        <button class="btn btn-primary" id="save-progress">Save Progress</button>
+                    </div>
+                </div>
+                <div class="tracker-timeline">
+                    <h3>Your Progress Timeline</h3>
+                    <div class="timeline-container" id="progress-timeline">
+                        <!-- Progress items will be added here by JavaScript -->
+                        <div class="timeline-empty">
+                            <i class="fas fa-image"></i>
+                            <p>Upload your first progress photo to start tracking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredient Checker Section -->
+    <section id="ingredient-checker" class="ingredient-checker">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ingredient Checker</h2>
+                <p>Learn about skincare ingredients and their benefits</p>
+            </div>
+            <div class="checker-content">
+                <div class="checker-search">
+                    <input type="text" id="ingredient-search" placeholder="Enter an ingredient name (e.g., Hyaluronic Acid)">
+                    <button class="btn btn-primary" id="check-ingredient">Check Ingredient</button>
+                </div>
+                <div class="ingredient-result" id="ingredient-result">
+                    <!-- Ingredient information will be displayed here -->
+                </div>
+                <div class="popular-ingredients">
+                    <h3>Popular Ingredients</h3>
+                    <div class="ingredients-grid">
+                        <button class="ingredient-btn" data-ingredient="Hyaluronic Acid">Hyaluronic Acid</button>
+                        <button class="ingredient-btn" data-ingredient="Vitamin C">Vitamin C</button>
+                        <button class="ingredient-btn" data-ingredient="Retinol">Retinol</button>
+                        <button class="ingredient-btn" data-ingredient="Niacinamide">Niacinamide</button>
+                        <button class="ingredient-btn" data-ingredient="Ceramides">Ceramides</button>
+                        <button class="ingredient-btn" data-ingredient="Alpha Hydroxy Acids">AHAs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seasonal Skincare Tips Section -->
+    <section id="seasonal" class="seasonal">
+        <div class="container">
+            <div class="section-header">
+                <h2>Seasonal Skincare Tips</h2>
+                <p>Adjust your routine for every season</p>
+            </div>
+            <div class="seasonal-content">
+                <div class="season-tabs">
+                    <button class="season-tab active" data-season="spring">Spring</button>
+                    <button class="season-tab" data-season="summer">Summer</button>
+                    <button class="season-tab" data-season="fall">Fall</button>
+                    <button class="season-tab" data-season="winter">Winter</button>
+                </div>
+                <div class="season-content">
+                    <div class="season-info active" data-season="spring">
+                        <h3>Spring Skincare</h3>
+                        <ul>
+                            <li>Lighten up your moisturizer as humidity increases</li>
+                            <li>Incorporate antioxidants to protect against environmental allergens</li>
+                            <li>Exfoliate regularly to remove winter dry skin</li>
+                            <li>Up your SPF as sun exposure increases</li>
+                            <li>Consider adding a vitamin C serum for a brightening boost</li>
+                        </ul>
+                    </div>
+                    <div class="season-info" data-season="summer">
+                        <h3>Summer Skincare</h3>
+                        <ul>
+                            <li>Use a lightweight, oil-free moisturizer</li>
+                            <li>Apply SPF 30+ daily, reapply every 2 hours</li>
+                            <li>Incorporate products with niacinamide to control oil</li>
+                            <li>Use a gentle cleanser to remove sweat and sunscreen</li>
+                            <li>Consider a cooling mist for hot days</li>
+                        </ul>
+                    </div>
+                    <div class="season-info" data-season="fall">
+                        <h3>Fall Skincare</h3>
+                        <ul>
+                            <li>Switch to a richer moisturizer as humidity decreases</li>
+                            <li>Continue using SPF daily</li>
+                            <li>Incorporate products with ceramides to strengthen the skin barrier</li>
+                            <li>Start using retinol if you haven't already</li>
+                            <li>Add a hydrating mask to your weekly routine</li>
+                        </ul>
+                    </div>
+                    <div class="season-info" data-season="winter">
+                        <h3>Winter Skincare</h3>
+                        <ul>
+                            <li>Use a heavy-duty moisturizer or facial oil</li>
+                            <li>Continue daily SPF application</li>
+                            <li>Limit hot showers which can dry out skin</li>
+                            <li>Use a humidifier to add moisture to the air</li>
+                            <li>Incorporate gentle exfoliation to remove dry skin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skincare Routine Reminder Section -->
+    <section id="reminders" class="reminders">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skincare Routine Reminders</h2>
+                <p>Set reminders to never miss your skincare routine again</p>
+            </div>
+            <div class="reminders-content">
+                <div class="reminder-form">
+                    <h3>Add New Reminder</h3>
+                    <div class="form-group">
+                        <label for="reminder-type">Routine Type</label>
+                        <select id="reminder-type">
+                            <option value="morning">Morning Routine</option>
+                            <option value="night">Night Routine</option>
+                            <option value="weekly">Weekly Treatment</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-time">Time</label>
+                        <input type="time" id="reminder-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-days">Days</label>
+                        <div class="days-selector">
+                            <label class="day-option">
+                                <input type="checkbox" name="day" value="mon"> Mon
+                            </label>
+                            <label class="day-option">
+                                <input type="checkbox" name="day" value="tue"> Tue
+                            </label>
+                            <label class="day-option">
+                                <input type="checkbox" name="day" value="wed"> Wed
+                            </label>
+                            <label class="day-option">
+                                <input type="checkbox" name="day" value="thu"> Thu
+                            </label>
+                            <label class="day-option">
+                                <input type="checkbox" name="day" value="fri"> Fri
+                            </label>
+                            <label class="day-option">
+                                <input type="checkbox" name="day" value="sat"> Sat
+                            </label>
+                            <label class="day-option">
+                                <input type="checkbox" name="day" value="sun"> Sun
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reminder-notes">Notes</label>
+                        <textarea id="reminder-notes" placeholder="Add notes about your routine..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="save-reminder">Save Reminder</button>
+                </div>
+                <div class="reminders-list">
+                    <h3>Your Reminders</h3>
+                    <div class="reminders-container" id="reminders-container">
+                        <!-- Reminders will be added here by JavaScript -->
+                        <div class="reminder-empty">
+                            <i class="fas fa-bell"></i>
+                            <p>Set your first reminder to start getting notifications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skin Concern Tracker Section -->
+    <section id="concerns" class="concerns">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skin Concern Tracker</h2>
+                <p>Monitor specific skin issues over time</p>
+            </div>
+            <div class="concerns-content">
+                <div class="concern-form">
+                    <h3>Add Skin Concern</h3>
+                    <div class="form-group">
+                        <label for="concern-type">Concern Type</label>
+                        <select id="concern-type">
+                            <option value="acne">Acne</option>
+                            <option value="dryness">Dryness</option>
+                            <option value="oiliness">Oiliness</option>
+                            <option value="wrinkles">Wrinkles/Fine Lines</option>
+                            <option value="dark-spots">Dark Spots</option>
+                            <option value="redness">Redness</option>
+                            <option value="sensitivity">Sensitivity</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="concern-severity">Severity (1-10)</label>
+                        <input type="range" id="concern-severity" min="1" max="10" value="5">
+                        <span id="severity-value">5</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="concern-date">Date</label>
+                        <input type="date" id="concern-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="concern-notes">Notes</label>
+                        <textarea id="concern-notes" placeholder="Add notes about your concern..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="save-concern">Save Concern</button>
+                </div>
+                <div class="concerns-timeline">
+                    <h3>Your Concern History</h3>
+                    <div class="concerns-container" id="concerns-container">
+                        <!-- Concerns will be added here by JavaScript -->
+                        <div class="concern-empty">
+                            <i class="fas fa-chart-line"></i>
+                            <p>Add your first skin concern to start tracking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Library Section -->
+    <section id="products" class="product-library">
+        <div class="container">
+            <div class="section-header">
+                <h2>Product Library</h2>
+                <p>Save and track your favorite skincare products</p>
+            </div>
+            <div class="products-content">
+                <div class="product-form">
+                    <h3>Add New Product</h3>
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" placeholder="Enter product name">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-brand">Brand</label>
+                        <input type="text" id="product-brand" placeholder="Enter brand name">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-type">Product Type</label>
+                        <select id="product-type">
+                            <option value="cleanser">Cleanser</option>
+                            <option value="toner">Toner</option>
+                            <option value="serum">Serum</option>
+                            <option value="moisturizer">Moisturizer</option>
+                            <option value="sunscreen">Sunscreen</option>
+                            <option value="mask">Mask</option>
+                            <option value="exfoliator">Exfoliator</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-rating">Rating (1-5)</label>
+                        <input type="range" id="product-rating" min="1" max="5" value="3">
+                        <span id="rating-value">3</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-notes">Notes</label>
+                        <textarea id="product-notes" placeholder="Add notes about the product..."></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="save-product">Save Product</button>
+                </div>
+                <div class="products-list">
+                    <h3>Your Products</h3>
+                    <div class="products-grid" id="products-grid">
+                        <!-- Products will be added here by JavaScript -->
+                        <div class="product-empty">
+                            <i class="fas fa-box"></i>
+                            <p>Add your first product to build your library</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skincare Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skincare Blog</h2>
+                <p>Latest skincare tips and trends</p>
+            </div>
+            <div class="blog-content">
+                <div class="blog-grid">
+                    <div class="blog-post">
+                        <div class="blog-image">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=skincare%20routine%20steps%20with%20products%20on%20white%20background&image_size=landscape_4_3" alt="Morning Skincare Routine">
+                        </div>
+                        <div class="blog-info">
+                            <h3>The Ultimate Morning Skincare Routine</h3>
+                            <p class="blog-date">February 10, 2026</p>
+                            <p class="blog-excerpt">Start your day with this comprehensive morning routine to protect and nourish your skin.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="blog-image">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=skincare%20ingredients%20hyaluronic%20acid%20vitamin%20c&image_size=landscape_4_3" alt="Essential Skincare Ingredients">
+                        </div>
+                        <div class="blog-info">
+                            <h3>10 Essential Skincare Ingredients You Need</h3>
+                            <p class="blog-date">February 5, 2026</p>
+                            <p class="blog-excerpt">Discover the key ingredients that will transform your skincare routine and address all your concerns.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <div class="blog-image">
+                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=skincare%20routine%20for%20different%20skin%20types&image_size=landscape_4_3" alt="Skincare for Different Skin Types">
+                        </div>
+                        <div class="blog-info">
+                            <h3>Custom Routines for Every Skin Type</h3>
+                            <p class="blog-date">January 28, 2026</p>
+                            <p class="blog-excerpt">Tailor your skincare routine to your specific skin type for optimal results.</p>
+                            <a href="#" class="btn btn-secondary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -361,6 +723,27 @@
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#glossary">Skincare Glossary</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Tools</h4>
+                    <ul>
+                        <li><a href="#tracker">Progress Tracker</a></li>
+                        <li><a href="#ingredient-checker">Ingredient Checker</a></li>
+                        <li><a href="#seasonal">Seasonal Tips</a></li>
+                        <li><a href="#reminders">Reminders</a></li>
+                        <li><a href="#concerns">Skin Concerns</a></li>
+                        <li><a href="#products">Product Library</a></li>
+                        <li><a href="#quiz">Skin Quiz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#blog">Skincare Blog</a></li>
+                        <li><a href="#glossary">Skincare Glossary</a></li>
+                        <li><a href="#tips">Expert Tips</a></li>
+                        <li><a href="#routine">Routine Builder</a></li>
                     </ul>
                 </div>
                 <div class="footer-newsletter">

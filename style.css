@@ -895,6 +895,802 @@ body.dark-mode .glossary-term p {
     color: #ccc;
 }
 
+/* Skin Progress Tracker Section */
+.tracker {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+}
+
+.tracker-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.tracker-upload {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.upload-area {
+    position: relative;
+    border: 2px dashed #ddd;
+    border-radius: 10px;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    border-color: #ff9a9e;
+    background-color: rgba(255, 154, 158, 0.05);
+}
+
+.upload-area input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-area label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.upload-area i {
+    font-size: 3rem;
+    color: #ff9a9e;
+    margin-bottom: 1rem;
+}
+
+.tracker-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input[type="date"],
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.tracker-timeline {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.timeline-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #999;
+}
+
+.timeline-empty i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
+
+.progress-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.progress-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.progress-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.progress-details {
+    flex: 1;
+}
+
+.progress-date {
+    font-weight: 600;
+    color: #ff9a9e;
+    margin-bottom: 0.5rem;
+}
+
+.progress-notes {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Ingredient Checker Section */
+.ingredient-checker {
+    padding: 80px 0;
+}
+
+.checker-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.checker-search {
+    display: flex;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#ingredient-search {
+    flex: 1;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#ingredient-search:focus {
+    border-color: #ff9a9e;
+    box-shadow: 0 0 0 3px rgba(255, 154, 158, 0.1);
+}
+
+.ingredient-result {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ingredient-info h3 {
+    color: #ff9a9e;
+    margin-bottom: 1rem;
+}
+
+.ingredient-info p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.ingredient-benefits {
+    margin-top: 1.5rem;
+}
+
+.ingredient-benefits h4 {
+    margin-bottom: 1rem;
+}
+
+.ingredient-benefits ul {
+    list-style-position: inside;
+    line-height: 1.6;
+}
+
+.popular-ingredients {
+    text-align: center;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.ingredient-btn {
+    padding: 10px 20px;
+    border: 1px solid #ff9a9e;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #ff9a9e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.ingredient-btn:hover {
+    background-color: #ff9a9e;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Seasonal Skincare Tips Section */
+.seasonal {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+}
+
+.season-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.season-tab {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.season-tab.active {
+    background-color: #ff9a9e;
+    color: #fff;
+    border-color: #ff9a9e;
+}
+
+.season-tab:hover {
+    border-color: #ff9a9e;
+    color: #ff9a9e;
+}
+
+.season-content {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.season-info {
+    display: none;
+}
+
+.season-info.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.season-info h3 {
+    color: #ff9a9e;
+    margin-bottom: 1.5rem;
+}
+
+.season-info ul {
+    list-style-position: inside;
+    line-height: 1.8;
+}
+
+.season-info li {
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+.season-info li::before {
+    content: '•';
+    color: #ff9a9e;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Skincare Routine Reminders Section */
+.reminders {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+}
+
+.reminders-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.reminder-form {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.days-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.day-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.reminders-list {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.reminders-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.reminder-item {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.reminder-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-time {
+    font-weight: 600;
+    color: #ff9a9e;
+    margin-bottom: 0.5rem;
+}
+
+.reminder-days {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.reminder-notes {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.reminder-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #999;
+}
+
+.reminder-empty i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
+
+/* Skin Concern Tracker Section */
+.concerns {
+    padding: 80px 0;
+}
+
+.concerns-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.concern-form {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.concerns-timeline {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.concerns-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.concern-item {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.concern-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.concern-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.concern-type {
+    font-weight: 600;
+    color: #ff9a9e;
+}
+
+.concern-severity {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.concern-date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.concern-notes {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+.concern-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #999;
+}
+
+.concern-empty i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
+
+/* Product Library Section */
+.product-library {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+}
+
+.products-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+}
+
+.product-form {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.products-list {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+#products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+.product-name {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.product-brand {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.product-type {
+    font-size: 0.9rem;
+    color: #ff9a9e;
+    margin-bottom: 0.5rem;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.rating-stars {
+    color: #ffd700;
+    margin-right: 0.5rem;
+}
+
+.product-notes {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+.product-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #999;
+    grid-column: 1 / -1;
+}
+
+.product-empty i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
+
+/* Skincare Blog Section */
+.blog {
+    padding: 80px 0;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-post {
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.blog-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.blog-post:hover .blog-image img {
+    transform: scale(1.05);
+}
+
+.blog-info {
+    padding: 1.5rem;
+}
+
+.blog-date {
+    font-size: 0.85rem;
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+.blog-excerpt {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Range Input Styling */
+input[type="range"] {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ff9a9e;
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ff9a9e;
+    cursor: pointer;
+    border: none;
+}
+
+/* Dark Mode Updates */
+body.dark-mode .tracker {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .tracker-upload,
+body.dark-mode .tracker-timeline,
+body.dark-mode .ingredient-result,
+body.dark-mode .season-content,
+body.dark-mode .reminder-form,
+body.dark-mode .reminders-list,
+body.dark-mode .concern-form,
+body.dark-mode .concerns-timeline,
+body.dark-mode .product-form,
+body.dark-mode .products-list,
+body.dark-mode .blog-post {
+    background-color: #1a1a1a;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .upload-area {
+    border-color: #444;
+}
+
+body.dark-mode .upload-area:hover {
+    border-color: #ff9a9e;
+    background-color: rgba(255, 154, 158, 0.1);
+}
+
+body.dark-mode .form-group label {
+    color: #f0f0f0;
+}
+
+body.dark-mode .form-group input[type="date"],
+body.dark-mode .form-group textarea,
+body.dark-mode #ingredient-search,
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group select,
+body.dark-mode .form-group input[type="time"] {
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+    border-color: #444;
+}
+
+body.dark-mode .progress-item,
+body.dark-mode .reminder-item,
+body.dark-mode .concern-item,
+body.dark-mode .product-card {
+    border-color: #444;
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .progress-notes,
+body.dark-mode .reminder-notes,
+body.dark-mode .concern-notes,
+body.dark-mode .product-notes,
+body.dark-mode .product-brand,
+body.dark-mode .blog-excerpt,
+body.dark-mode .blog-date {
+    color: #ccc;
+}
+
+body.dark-mode .ingredient-btn {
+    background-color: #1a1a1a;
+    border-color: #ff9a9e;
+    color: #ff9a9e;
+}
+
+body.dark-mode .ingredient-btn:hover {
+    background-color: #ff9a9e;
+    color: #1a1a1a;
+}
+
+body.dark-mode .seasonal,
+body.dark-mode .reminders,
+body.dark-mode .product-library {
+    background-color: #2d2d2d;
+}
+
+body.dark-mode .season-tab {
+    background-color: #1a1a1a;
+    border-color: #444;
+    color: #f0f0f0;
+}
+
+body.dark-mode .season-tab:hover {
+    border-color: #ff9a9e;
+    color: #ff9a9e;
+}
+
+body.dark-mode .season-info li {
+    color: #f0f0f0;
+}
+
+body.dark-mode .reminder-empty,
+body.dark-mode .concern-empty,
+body.dark-mode .product-empty {
+    color: #666;
+}
+
+body.dark-mode .reminder-empty i,
+body.dark-mode .concern-empty i,
+body.dark-mode .product-empty i {
+    color: #444;
+}
+
+body.dark-mode .blog {
+    background-color: #1a1a1a;
+}
+
+body.dark-mode .blog-info h3 {
+    color: #f0f0f0;
+}
+
+body.dark-mode input[type="range"] {
+    background: #444;
+}
+
+body.dark-mode input[type="range"]::-webkit-slider-thumb {
+    background: #ff9a9e;
+}
+
+body.dark-mode input[type="range"]::-moz-range-thumb {
+    background: #ff9a9e;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .menu-toggle {
@@ -915,6 +1711,8 @@ body.dark-mode .glossary-term p {
         transition: transform 0.3s ease;
         opacity: 0;
         visibility: hidden;
+        max-height: 70vh;
+        overflow-y: auto;
     }
 
     .nav-links.active {
@@ -924,7 +1722,7 @@ body.dark-mode .glossary-term p {
     }
 
     .nav-links li {
-        margin: 1rem 0;
+        margin: 0.75rem 0;
     }
 
     .nav-actions {
@@ -965,6 +1763,31 @@ body.dark-mode .glossary-term p {
 
     .newsletter-form {
         flex-direction: column;
+    }
+
+    /* New sections responsive design */
+    .reminders-content,
+    .concerns-content,
+    .products-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .checker-search {
+        flex-direction: column;
+    }
+
+    .days-selector {
+        justify-content: center;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .season-content,
+    .ingredient-result {
+        padding: 2rem;
     }
 }
 
