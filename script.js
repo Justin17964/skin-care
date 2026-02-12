@@ -1,8 +1,6 @@
 // DOM Elements
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
-const filterButtons = document.querySelectorAll('.filter-btn');
-const productCards = document.querySelectorAll('.product-card');
 const routineTabs = document.querySelectorAll('.routine-tab');
 const quizQuestions = document.querySelectorAll('.question');
 const prevBtn = document.getElementById('prev-btn');
@@ -19,29 +17,6 @@ const saveRoutineBtn = document.querySelector('.routine-builder .btn-primary');
 if (menuToggle) {
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-    });
-}
-
-// Product Filtering
-if (filterButtons.length > 0) {
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-            
-            const filter = button.getAttribute('data-filter');
-            
-            // Filter product cards
-            productCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
     });
 }
 
@@ -243,22 +218,11 @@ if (newsletterForm) {
         const email = emailInput.value;
         
         if (email) {
-            alert(`Thank you for subscribing with ${email}!\nYou'll receive exclusive offers and skincare tips.`);
+            alert(`Thank you for subscribing with ${email}!\nYou'll receive exclusive skincare tips and routines.`);
             emailInput.value = '';
         } else {
             alert('Please enter a valid email address.');
         }
-    });
-}
-
-// Add to Cart Buttons
-const addToCartButtons = document.querySelectorAll('.product-card .btn');
-if (addToCartButtons.length > 0) {
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const productName = button.closest('.product-card').querySelector('h3').textContent;
-            alert(`${productName} has been added to your cart!`);
-        });
     });
 }
 
@@ -283,7 +247,7 @@ if (heroButtons.length > 0) {
 
 // Animate elements on scroll
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.section-header, .product-card, .tip-card, .testimonial-card');
+    const elements = document.querySelectorAll('.section-header, .tip-card');
     
     elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
@@ -304,30 +268,8 @@ window.addEventListener('load', () => {
     updateProgress();
 });
 
-// Add hover effects to product cards
-productCards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-    });
-});
-
 // Add hover effects to tip cards
 document.querySelectorAll('.tip-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-    });
-});
-
-// Add hover effects to testimonial cards
-document.querySelectorAll('.testimonial-card').forEach(card => {
     card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-10px)';
     });
@@ -352,21 +294,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
-
-// Product image zoom effect
-productCards.forEach(card => {
-    const productImage = card.querySelector('.product-image img');
-    if (productImage) {
-        card.addEventListener('mouseenter', () => {
-            productImage.style.transform = 'scale(1.05)';
-            productImage.style.transition = 'transform 0.3s ease';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            productImage.style.transform = 'scale(1)';
-        });
-    }
 });
 
 // Quiz option selection effect
